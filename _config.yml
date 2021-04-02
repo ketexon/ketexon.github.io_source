@@ -5,6 +5,9 @@ author:
     - xketexon@gmail.com
     - zane.a.s.clark@gmail.com
 
+sass:
+  sass_dir: _sass
+
 show_excerpts: false
 
 minima:
