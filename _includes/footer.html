@@ -1,0 +1,50 @@
+<footer class="site-footer bg-light d-none d-lg-block py-2">
+	<data class="u-url" href="{{ "/" | relative_url }}"></data>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				{%- if site.author %}
+					{% if site.author.name -%}
+						<div class="row">
+							<p class="lead">
+								{{ site.author.name | escape }}
+							</p>
+						</div>
+					{% endif -%}
+
+					{% if site.author.email -%}
+						
+							<div class="row">
+								<div class="col-auto">
+									{% for email in site.author.email %}
+										<div class="row mt-1">
+											<a class="u-email link-primary" href="mailto:{{ email }}">
+												{{ email }}
+											</a>
+										</div>
+									{% endfor %}
+								</div>
+								<div class="col-auto">
+									{% for email in site.author.email %}
+										<div class="row mt-1">
+											<button type="button" class="u-email-copy btn btn-sm btn-secondary py-0"
+												onmouseup="navigator.clipboard.writeText('{{ email }}'); setTimeout(()=>this.blur(), 100)"
+												data-bs-toggle="tooltip" data-bs-placement="top" title="Copied to clipboard">
+												<span class="material-icons">content_copy</span>
+											</button>
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+						
+					{%- endif %}
+				{%- endif %}
+			</div>
+			<div class="col">
+				<div class="social-links h-100">
+					{%- include social.html -%}
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+
+  <body>
+    <div class="container-fluid px-0 min-vh-100 d-flex flex-column align-items-stretch align-content-stretch">
+      <div class="row-md-auto">
+        {%- include header.html -%}
+      </div>
+      
+      <main class="page-content row m-0 py-3 align-self-stretch flex-grow-1" aria-label="Content">
+        <div class="container">
+          <div class="wrapper container">
+            {{ content }}
+          </div>
+        </div>
+      </main>
+      <div class="row-md-auto">
+        {%- include footer.html -%}
+      </div>
+    </div>
+      
+
+    {%- include scripts.html -%}
+  </body>
+
+</html>

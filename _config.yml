@@ -1,0 +1,84 @@
+title: Ketexon
+author:
+  name: Zane Clark
+  email:
+    - xketexon@gmail.com
+    - zane.a.s.clark@gmail.com
+
+show_excerpts: false
+
+minima:
+  date_format: "%d %B %Y"
+
+  social_links:
+    twitter: ZaneASClark
+    github:  ketexon
+    youtube_channel: UCR4uswc9hdl2Zs5YY7LDgcQ
+    linkedin: zane-clark-52a48a166
+
+
+header_pages:
+ - /about/
+ - /music/index.html
+
+theme: minima
+
+collections_dir: collections
+collections:
+  peotry:
+    output: true
+  essays:
+    output: true
+  music:
+    output: true
+
+plugins:
+ - jekyll-feed
+ - jekyll-seo-tag
+ - jekyll-paginate-v2
+
+pagination:
+  enabled: true
+  debug: false
+  collection: 'posts'
+  per_page: 5
+  permalink: '/page/:num/'
+
+  title: ':title - page :num'
+
+  limit: 0
+  
+  sort_field: 'date'
+
+  sort_reverse: true
+
+  category: 'posts'
+
+  tag: ''
+
+  locale: '' 
+
+  trail: 
+    before: 2
+    after: 2
+
+  extension: html
+
+  indexpage: 'index'
+
+autopages:
+  enabled: false
+  categories:
+    enabled: false
+  collections:
+    enabled: false
+
+  tags:
+    enabled: true
+    layouts:
+      - "autopage_tags.html"
+    title: "Posts tagged with :tag"
+    permalink: "/tag/:tag"
+    slugify:
+      mode: "default"
+      case: false

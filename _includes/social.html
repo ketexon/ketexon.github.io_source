@@ -1,0 +1,51 @@
+{%- assign social = site.minima.social_links -%}
+
+<div class="social-media-list container">
+  <div class="row align-items-center d-flex">
+  {%- for glb in social.gitlab -%}{%- if glb.username and glb.instance -%}
+    <div class="col-sm">
+      <a rel="me" href="https://{{ glb.instance | cgi_escape | escape}}/{{glb.username}}" title="{{ glb.username | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#gitlab' | relative_url }}"></use></svg></a>
+    </div>
+  {%- endif -%}{%- endfor -%}
+  {%- if social.facebook -%}
+    <div class="col-sm">
+      <a rel="me" href="https://www.facebook.com/{{ social.facebook | cgi_escape | escape }}" title="{{ social.facebook | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#facebook' | relative_url }}"></use></svg></a>
+    </div>
+  {%- endif -%}
+  {%- if social.github -%}
+    <div class="col-sm">
+      <a rel="me" href="https://github.com/{{ social.github | cgi_escape | escape }}" title="{{ social.github | escape }}"><img src="/assets/icons/github.svg"/></a>
+    </div>
+  {%- endif -%}
+  {%- if social.stackoverflow -%}
+    <div class="col-sm">
+      <a rel="me" href="https://stackoverflow.com/users/{{ social.stackoverflow | cgi_escape | escape }}" title="{{ social.stackoverflow | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#stackoverflow' | relative_url }}"></use></svg></a>
+    </div>
+  {%- endif -%}
+  {%- if social.instagram -%}
+    <div class="col-sm">
+      <a rel="me" href="https://www.instagram.com/{{ social.instagram | cgi_escape | escape }}" title="{{ social.instagram | escape }}"><svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#instagram' | relative_url }}"></use></svg></a>
+    </div>
+  {%- endif -%}
+  {%- if social.linkedin -%}
+    <div class="col-sm">
+      <a rel="me" href="https://www.linkedin.com/in/{{ social.linkedin | cgi_escape | escape }}" title="{{ social.linkedin | escape }}"><img src="/assets/icons/linkedin.png"/></a>
+    </div>
+  {%- endif -%}
+  {%- if social.twitter -%}
+    <div class="col-sm">
+      <a rel="me" href="https://twitter.com/{{ social.twitter | cgi_escape | escape }}" title="{{ social.twitter | escape }}"><img src="/assets/icons/twitter.svg"/></a>
+    </div>
+  {%- endif -%}
+  {%- if social.youtube_channel -%}
+    <div class="col-sm">
+      <a rel="me" href="https://www.youtube.com/channel/{{ social.youtube_channel | cgi_escape | escape }}" title="{{ social.youtube_channel_name | escape | default: 'YouTube' }}"><img src="/assets/icons/youtube.svg"/></a>
+    </div>
+  {%- endif -%}
+  </div>
+</div>
+<script>
+for(let element of document.getElementsByClassName("social-media-list")[0].querySelectorAll("a")){
+    element.target = "_blank";
+}
+</script>
