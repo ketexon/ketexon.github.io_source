@@ -21,7 +21,7 @@ header_pages:
  - /about/
  - /music/index.html
 
-theme: minima
+#theme: minima
 
 collections_dir: collections
 collections:
