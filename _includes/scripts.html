@@ -1,0 +1,21 @@
+<script defer>
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl, {trigger: "manual"})
+})
+for(let i in tooltipTriggerList){
+	let elem = tooltipTriggerList[i];
+	let tooltip = tooltipList[i];
+	elem.addEventListener(
+		"click",
+		()=>{
+			tooltip.show();
+			setTimeout(
+				()=>{
+					tooltip.hide()
+				}, 1000
+			)
+		}
+	)
+}
+</script>

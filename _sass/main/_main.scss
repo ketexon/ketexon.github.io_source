@@ -1,0 +1,65 @@
+.site-footer {
+	width: 100%;
+	height: $line-height-base*6rem;
+}
+
+.u-email-copy {
+	span {
+		font-size: 0.8em;
+	}
+}
+
+.social-media-list {
+	height: 100%;
+	.row{
+		height: 100%;
+		.col-sm {
+			a {
+				display: flex;
+				justify-content: center;
+				align-content: center;
+	
+				height: 100%;
+				min-width: 50%;
+				img {
+					max-width: 25%;
+					max-height: 25%;
+				}
+			}
+		} 
+	} 
+}
+
+.flex-shrink-2 {
+	flex-shrink: 2 !important;
+}
+.flex-shrink-3 {
+	flex-shrink: 3 !important;
+}
+
+.flex-grow-2 {
+	flex-grow: 2 !important;
+}
+.flex-grow-3 {
+	flex-grow: 3 !important;
+}
+
+.flex-basis-0 {
+	flex-basis: 0 !important;
+}
+
+.flex-basis-25 {
+	flex-basis: 25% !important;
+}
+
+.flex-basis-50 {
+	flex-basis: 50% !important;
+}
+
+.flex-basis-75 {
+	flex-basis: 75% !important;
+}
+
+.flex-basis-100 {
+	flex-basis: 100% !important;
+}

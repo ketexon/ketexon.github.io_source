@@ -1,0 +1,78 @@
+---
+layout: default
+---
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {% if paginator %}
+    {% assign posts = paginator.posts %}
+  {% else %}
+    {% assign posts = site[page.collection] %}
+  {% endif %}
+
+
+  {%- if posts.size > 0 -%}
+    <div class="container px-0">
+      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      {%- for post in posts -%}
+        <div class="card mb-3">
+          <!-- We add style="transform: rotate(0);" because it causes the stretched link to only affect the body-->
+          <div class="card-body" style="transform: rotate(0);">
+            <h3>
+              <a class="stretched-link" href="{{ post.url | relative_url }}">
+                {{ post.title | escape }}
+              </a>
+            </h3>
+          </div>
+          {%- if post.tags and post.tags.size > 0 -%}
+            <ul class="list-group list-group-flush">
+              {%- if post.tags and post.tags.size > 0 -%}
+                <li class="list-group-item">
+                  {%- for tag in post.tags -%}
+                    <span class="badge bg-primary me-2">{{tag}}</span>
+                  {%- endfor -%}
+                </li>
+              {%- endif -%}
+            </ul>
+          {%- endif -%}
+          <div class="card-footer">
+            <span class="post-meta">
+              {%- if post.updated -%}
+                {{ post.date_published | date: date_format }} updated {{ post.date | date: date_format }}
+              {%- else -%}
+                {{ post.date | date: date_format }}
+              {%- endif -%}
+            </span>
+          </div>
+        </div>
+      {%- endfor -%}
+      {%- if paginator.page_trail -%}
+        <div class="container d-flex justify-content-center">
+          <div class="btn-group">
+            <a class="btn btn-secondary material-icons px-0 {% if paginator.previous_page_path == nil %}disabled{% endif %}"
+              href="{{ paginator.previous_page_path | prepend: site.baseurl }}">
+              navigate_before
+            </a >
+            {% for trail in paginator.page_trail %}
+            <a class="btn btn-secondary {% if page.url == trail.path %}disabled{% endif %}"
+              href="{{ trail.path | prepend: site.baseurl }}"
+              title="{{trail.title}}">
+              {{ trail.num }}
+            </a >
+            {% endfor %}
+            <a class="btn btn-secondary px-0 material-icons {% if paginator.next_page_path == nil %}disabled{% endif %}"
+              href="{{ paginator.next_page_path | prepend: site.baseurl }}">
+              navigate_next
+            </a >
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+</div>

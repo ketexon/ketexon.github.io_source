@@ -1,0 +1,252 @@
+---
+layout: default
+---
+{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+<article class="post">
+
+	<header class="post-header">
+		<h1 class="post-title">{{ page.title | escape }}</h1>
+		{%- if page.tags and page.tags.size > 0 -%}
+			<div class="container px-0 mb-2">
+				{%- if page.tags and page.tags.size > 0 -%}
+					{%- for tag in page.tags -%}
+						<span class="badge bg-primary me-2">{{tag}}</span>
+					{%- endfor -%}
+				{%- endif -%}
+				</div>
+		{%- endif -%}
+		<div class="container post-tags"></div>
+		<h6 class="post-subtitle text-secondary">
+			{%- if page.updated -%}
+				{{ page.date_published | date: date_format }} updated {{ page.date | date: date_format }}
+			{%- else -%}
+				{{ page.date | date: date_format }}
+			{%- endif -%}
+		</h6>
+	</header>
+	<div class="post-content">
+		{{ content }}
+		{%- for piece in page.pieces -%}
+		<div class="card audio-card mb-4">
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">
+					<div class="container p-2">
+						<div class="row">
+							<div class="container d-flex justify-content-between">
+								<div class="flex-basis-0 flex-grow-1 d-flex align-items-center justify-content-start p-0">
+									<span>{{piece.title}} {%- if piece.key -%}{{ " " }}in {{piece.key}}{%- endif -%}{%- if piece.tempo -%}<br/>{{piece.tempo}}{%- endif -%}</span>
+								</div>
+								<div class="container d-flex justify-content-center align-items-center flex-grow-2 flex-basis-0 p-0">
+									<div class="btn-group">
+										<span class="btn btn-primary material-icons p-1 rewind">fast_rewind</span>
+										<span class="btn btn-primary material-icons p-1 play">play_arrow</span>
+										<span class="btn btn-primary material-icons p-1 forward">fast_forward</span>
+									</div>
+								</div>
+								<div class="container flex-basis-0 flex-grow-1 p-0">
+									<div class="container d-flex align-items-center justify-content-center p-0">
+										<span class="btn material-icons p-1 mute">volume_up</span>
+										<input type="range" class="form-range volume-range" value="50"/>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row mt-4">
+							<div class="container d-flex">
+								<span class="me-4 piece-time">00:00</span>
+								<input type="range" class="form-range piece-time-range" value="0"/>
+								<span class="ms-4 piece-duration">00:00</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				{%- if piece.tags -%}
+				<li class="list-group-item">
+					{%- for tag in piece.tags -%}
+                    	<span class="badge pointer-events-none user-select-none bg-primary me-2">{{tag}}</span>
+                	{%- endfor -%}
+				</li>
+				{%- endif -%}
+				{%- if piece.info -%}
+				<li class="list-group-item">
+					{%- if piece.key -%}
+						<div class="btn-group me-2">
+							<button class="pe-none btn btn-primary badge px-2 py-1">Key</button>
+							<button class="pe-none btn btn-secondary badge bg-secondary px-2 py-1">{{piece.key}}</button>
+						</div>
+					{%- endif -%}
+					{%- if piece.tempo -%}
+						<div class="btn-group me-2">
+							<button class="pe-none btn btn-primary badge px-2 py-1">Tempo</button>
+							<button class="pe-none btn btn-secondary badge bg-secondary px-2 py-1">{{piece.tempo}}</button>
+						</div>
+					{%- endif -%}
+					{%- for info in piece.info -%}
+                    	<div class="btn-group me-2">
+							<button class="pe-none btn btn-primary badge px-2 py-1">{{info.key}}</button>
+							<button class="pe-none btn btn-secondary badge bg-secondary px-2 py-1">{{info.value}}</button>
+						</div>
+                	{%- endfor -%}
+				</li>
+				{%- endif -%}
+				{%- if piece.description -%}
+				<li class="list-group-item">
+					{{ piece.description }}
+				</li>
+				{%- endif -%}
+				{%- if piece.file or piece.pdf -%}
+				<li class="list-group-item">
+					<div class="btn-group">
+						<button class="btn btn-secondary px-2 py-1 pe-none">
+							Download
+						</button>
+						{%- if piece.file -%}
+							<a class="btn btn-primary px-2 py-1 material-icons" href="{{piece.file}}" target="_blank">audiotrack</a>
+						{%- endif -%}
+						{%- if piece.pdf -%}
+							<a class="btn btn-primary px-2 py-1 material-icons"  href="{{piece.pdf}}" target="_blank">picture_as_pdf</a>
+						{%- endif -%}
+					</div>
+				</li>
+				{%- endif -%}
+			</ul>
+			{%- if piece.creation_date -%}
+			<div class="card-footer">
+				{{ piece.creation_date }}
+			</div>
+			{%- endif -%}
+			
+		</div>
+		{%- endfor -%}
+	</div>
+</article>
+<script>
+	const miPause = "pause",
+		miPlay = "play_arrow",
+		miVolume = "volume_up",
+		miMuted = "volume_off";
+	
+	const rewindAmount = 10;
+
+	const files = [
+		{%- for piece in page.pieces -%}
+			"{{piece.file}}",
+		{%- endfor -%}
+	]
+	let cards = document.querySelectorAll(".audio-card");
+	let plays = [];
+	for(let cardIndex = 0; cardIndex < cards.length; cardIndex++){
+		console.log(files[cardIndex])
+		cards[cardIndex].audio = new Audio(files[cardIndex]);
+		cards[cardIndex].playing = false;
+
+		plays[cardIndex] = cards[cardIndex].querySelector(".play");
+		let play = plays[cardIndex];
+		play.addEventListener(
+			"click",
+			()=>{
+				cards[cardIndex].playing = !cards[cardIndex].playing;
+				if(cards[cardIndex].playing){
+					cards[cardIndex].audio.play();
+					play.childNodes[0].nodeValue = miPause;
+				}
+				else{
+					cards[cardIndex].audio.pause();
+					play.childNodes[0].nodeValue = miPlay;
+				}
+			}
+		);
+
+		cards[cardIndex].audio.addEventListener(
+			"ended",
+			()=>{
+				cards[cardIndex].playing = false;
+				play.childNodes[0].nodeValue = miPlay;
+			}
+		);
+
+		let rewind = cards[cardIndex].querySelector(".rewind");
+		rewind.addEventListener(
+			"click",
+			()=>{
+				cards[cardIndex].audio.currentTime = Math.max(cards[cardIndex].audio.currentTime - rewindAmount, 0);
+			}
+		);
+
+		let forward = cards[cardIndex].querySelector(".forward");
+		forward.addEventListener(
+			"click",
+			()=>{
+				cards[cardIndex].audio.currentTime = Math.min(cards[cardIndex].audio.currentTime + rewindAmount, cards[cardIndex].audio.duration);
+			}
+		);
+
+		let timeRange = cards[cardIndex].querySelector(".piece-time-range");
+		let time = cards[cardIndex].querySelector(".piece-time");
+		let duration = cards[cardIndex].querySelector(".piece-duration");
+
+		cards[cardIndex].audio.addEventListener(
+			"durationchange",
+			()=>{
+				let dur = cards[cardIndex].audio.duration;
+				timeRange.max = Math.floor(dur) | 0;
+				duration.childNodes[0].nodeValue = `${(dur/60 | 0).toString().padStart(2,'0')}:${(dur%60 | 0).toString().padStart(2,'0')}`;
+			}
+		)
+
+		cards[cardIndex].audio.addEventListener(
+			"timeupdate",
+			()=>{
+				let curTime = cards[cardIndex].audio.currentTime | 0;
+				time.childNodes[0].nodeValue = `${(curTime/60 | 0).toString().padStart(2,'0')}:${(curTime%60).toString().padStart(2,'0')}`;
+				timeRange.value = curTime;
+			}
+		);
+
+		timeRange.addEventListener(
+			"input",
+			()=>{
+				let curTime = timeRange.value;
+				cards[cardIndex].audio.currentTime = timeRange.value;
+				time.childNodes[0].nodeValue = `${(curTime/60 | 0).toString().padStart(2,'0')}:${(curTime%60).toString().padStart(2,'0')}`;
+				timeRange.value = curTime;
+			}
+		);
+
+		let volumeRange = cards[cardIndex].querySelector(".volume-range");
+		let mute = cards[cardIndex].querySelector(".mute");
+		mute.muted = false;
+
+		cards[cardIndex].audio.volume = parseInt(volumeRange.value)/100
+		volumeRange.addEventListener(
+			"input",
+			()=>{
+				if(mute.muted){
+					mute.muted = false;
+					mute.childNodes[0].nodeValue = miVoume;
+				}
+					
+				cards[cardIndex].audio.volume = parseInt(volumeRange.value)/100
+			}
+		);
+
+		
+		mute.addEventListener(
+			"click",
+			()=>{
+				mute.muted = !mute.muted;
+				if(mute.muted){
+					mute.childNodes[0].nodeValue = miMuted;
+					mute.lastVolume = parseInt(volumeRange.value);
+					volumeRange.value = 0;
+					cards[cardIndex].audio.volume = 0;
+				}
+				else{
+					mute.childNodes[0].nodeValue = miVolume;
+					volumeRange.value = mute.lastVolume;
+					cards[cardIndex].audio.volume = mute.lastVolume/100;
+				}
+			}
+		);
+	}
+</script>
