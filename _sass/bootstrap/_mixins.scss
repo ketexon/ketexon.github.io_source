@@ -3,10 +3,10 @@
 // Used in conjunction with global variables to enable certain theme features.
 
 // Vendor
-@import "vendor/rfs";
+@import "bootstrap/vendor/rfs";
 
 // Deprecate
-@import "mixins/deprecate";
+@import "bootstrap/mixins/deprecate";
 
 // Helpers
 @import "mixins/breakpoints";
