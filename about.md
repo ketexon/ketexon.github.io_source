@@ -3,6 +3,37 @@ layout: page
 title: About
 permalink: /about/
 ---
+## Contact
+Please contact me through either of these emails.
+
+{% if site.author.email -%}
+	<div class="row">
+		<div class="col-auto">
+			{% for email in site.author.email %}
+				<div class="row mt-1">
+					<a class="u-email link-primary" href="mailto:{{ email }}">
+						{{ email }}
+					</a>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="col-auto">
+			{% for email in site.author.email %}
+				<div class="row mt-1">
+					<button type="button" class="u-email-copy btn btn-sm btn-secondary py-0"
+						onmouseup="navigator.clipboard.writeText('{{ email }}'); setTimeout(()=>this.blur(), 100)"
+						data-bs-toggle="tooltip" data-bs-placement="top" title="Copied to clipboard">
+						<span class="material-icons">content_copy</span>
+					</button>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	
+{%- endif %}
+
+
+
 ## Me
 My name is Zane Clark and I go by the username Ketexon.
 
@@ -24,6 +55,14 @@ This website serves several purposes
 <li class="list-group-item">To give a place to publish essays</li>
 </ul>
 
+## Copyright and Licensing
+
+All musical compositions and poems are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">Creative Commons Attribution-NonCommercial 4.0 International License</a>. <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /> Said simply, you can use the works in any manner that you please as long as it is not commercial. If you wish to use it commercially, contact me.
+
+This audio files are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>. <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
+
+The website itself, with the exception of the already-licensed works therein, is licensed under the [MIT License]. 
+
 [Github pages]:https://pages.github.com/
 [website github]:https://github.com/ketexon/ketexon.github.io
 [website source]:https://github.com/ketexon/ketexon.github.io_source
@@ -32,6 +71,8 @@ This website serves several purposes
 [Minima]:https://github.com/jekyll/minima
 [Bootstrap 5.0]:https://getbootstrap.com/
 [Material Icons]:https://fonts.google.com/icons?selected=Material+Icons
+
+[MIT License]:/license/
 
 <script>
 document.querySelector("#age").appendChild(

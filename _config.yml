@@ -25,12 +25,16 @@ header_pages:
  - title: Music
    urls: 
     - url: /composition/index.html
+ - title: Poetry
+   urls: 
+    - title: Poems
+      url: /poetry/index.html
 
 #theme: minima
 
 collections_dir: collections
 collections:
-  peotry:
+  poetry:
     output: true
   essays:
     output: true
