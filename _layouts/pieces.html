@@ -89,6 +89,11 @@ layout: default
                 	{%- endfor -%}
 				</li>
 				{%- endif -%}
+				{%- if piece.dedication -%}
+				<li class="list-group-item font-script">
+					&agrave; {{ piece.dedication }}
+				</li>
+				{%- endif -%}
 				{%- if piece.description -%}
 				<li class="list-group-item">
 					{{ piece.description }}
