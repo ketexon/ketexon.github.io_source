@@ -63,3 +63,12 @@
 .flex-basis-100 {
 	flex-basis: 100% !important;
 }
+
+.page-content a[target="_blank"]:not(.btn), .after-open-in-new {
+	&::after {
+		content: "open_in_new";
+		font-family: 'Material Icons';
+  		-webkit-font-feature-settings: 'liga';
+  		font-feature-settings: 'liga';
+	}
+}

@@ -21,8 +21,10 @@ minima:
 
 
 header_pages:
- - /about/
- - /music/index.html
+ - url: /about/
+ - title: Music
+   urls: 
+    - url: /composition/index.html
 
 #theme: minima
 
@@ -32,7 +34,7 @@ collections:
     output: true
   essays:
     output: true
-  music:
+  composition:
     output: true
 
 plugins:

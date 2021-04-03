@@ -18,4 +18,10 @@ for(let i in tooltipTriggerList){
 		}
 	)
 }
+
+document.querySelectorAll('a[target="_blank"]').forEach(
+	(e)=>{
+		e.rel = "noopener noreferrer";
+	}
+)
 </script>
