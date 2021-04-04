@@ -117,7 +117,7 @@ layout: default
 			</ul>
 			{%- if piece.creation_date -%}
 			<div class="card-footer">
-				{{ piece.creation_date }}
+				{{ piece.creation_date | date: date_format }}
 			</div>
 			{%- endif -%}
 			
