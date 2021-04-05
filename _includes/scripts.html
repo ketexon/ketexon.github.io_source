@@ -1,5 +1,5 @@
 <script defer>
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]:not(.tooltip-hover)'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl, {trigger: "manual"})
 })
@@ -19,9 +19,25 @@ for(let i in tooltipTriggerList){
 	)
 }
 
+var tooltipTriggerListHover = [].slice.call(document.querySelectorAll('.tooltip-hover'))
+var tooltipListHover = tooltipTriggerListHover.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
 document.querySelectorAll('a[target="_blank"]').forEach(
 	(e)=>{
 		e.rel = "noopener noreferrer";
+	}
+)
+
+document.querySelectorAll(".form-control-size-dynamic").forEach(
+	(e)=>{
+		e.style.width = ((e.value.length + 2) * 8) + 'px';
+	}
+)
+document.querySelectorAll(".form-control-auto-select").forEach(
+	(e)=>{
+		e.addEventListener("click", (evt)=>{evt.target.select();});
 	}
 )
 </script>

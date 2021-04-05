@@ -7,3 +7,49 @@ pagination:
   sort_field: opus
   permalink: '/composition/:num/'
 ---
+<script>
+const compositions = {
+{%-for page in site.composition -%}
+{{page.opus}}: "{{page.url}}",
+{%- endfor -%}
+}
+function hashChange(){
+  const opus = parseInt(window.location.hash.substr(1));
+  if(opus){
+    let contentWrapper = document.querySelector(".content-wrapper");
+    while(contentWrapper.lastChild)
+      contentWrapper.removeChild(contentWrapper.lastChild);
+
+
+    let redirectText = document.createElement("h1");
+    redirectText.classList.add("display-5");
+    redirectText.appendChild(document.createTextNode("Redirecting"));
+
+    let redirectTextEllipses = document.createElement("span");
+    redirectTextEllipses.classList.add("font-monospace", "fs-3", "ws-pre");
+    let redirectTextEllipsesNode = document.createTextNode("   ");
+    redirectTextEllipses.appendChild(redirectTextEllipsesNode);
+
+    window.setInterval(()=>{
+      let cDots = (redirectTextEllipsesNode.nodeValue.match(/\./g)||[]).length;
+      cDots = cDots > 2 ? 0 : cDots + 1;
+      redirectTextEllipsesNode.nodeValue = "".padEnd(cDots, ".").padEnd(3);
+    }, 1000)
+
+    redirectText.appendChild(redirectTextEllipses);
+
+    let spinner = document.createElement("div");
+    spinner.classList.add("spinner-border");
+    spinner.setAttribute("role", "status");
+    
+    let spinnerContainer = document.createElement("div");
+    spinnerContainer.classList.add("d-flex", "align-items-center", "container-fluid", "flex-column");
+    spinnerContainer.appendChild(redirectText);
+    spinnerContainer.appendChild(spinner);
+    contentWrapper.appendChild(spinnerContainer);
+    window.location.replace(compositions[opus]);
+  }
+}
+hashChange();
+window.addEventListener("hashchange", hashChange);
+</script>

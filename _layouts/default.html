@@ -4,6 +4,11 @@
   {%- include head.html -%}
 
   <body>
+    <noscript>
+      <div class="alert alert-danger m-0" role="alert">
+        Javascript is required to run this page.
+      </div>
+    </noscript>
     <div class="container-fluid px-0 min-vh-100 d-flex flex-column align-items-stretch align-content-stretch">
       <div class="row-md-auto">
         {%- include header.html -%}
@@ -11,7 +16,7 @@
       
       <main class="page-content row m-0 py-3 align-self-stretch flex-grow-1" aria-label="Content">
         <div class="container">
-          <div class="wrapper container">
+          <div class="content-wrapper container">
             {{ content }}
           </div>
         </div>

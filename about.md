@@ -4,9 +4,10 @@ title: About
 permalink: /about/
 ---
 ## Contact
-Please contact me through either of these emails.
+Please contact me through either of these emails for business purposes.
 
 {% if site.author.email -%}
+<div class="container-fluid p-0">
 	<div class="row">
 		<div class="col-auto">
 			{% for email in site.author.email %}
@@ -29,21 +30,29 @@ Please contact me through either of these emails.
 			{% endfor %}
 		</div>
 	</div>
-	
+</div>
 {%- endif %}
 
-
+You can contact me on discord for any purpose:
+<input class="form-control-plaintext d-inline-block form-control-size-dynamic form-control-auto-select p-1" type="text" readonly value="ketexon#8321"/>
+<button type="button" class="u-email-copy btn btn-sm btn-secondary py-0"
+	onmouseup="navigator.clipboard.writeText('ketexon#8321'); setTimeout(()=>this.blur(), 100)"
+	data-bs-toggle="tooltip" data-bs-placement="top" title="Copied to clipboard">
+	<span class="material-icons">content_copy</span>
+</button>.
 
 ## Me
 My name is Zane Clark and I go by the username Ketexon.
 
 I am a <span id="age"></span> year old student who finds joy in academia and creativity.
 
+To know more about me, see [about me](/about_me/).
+
 ## This website
 
 This website is hosted on [Github pages]{:target="_blank"} ([website][website github]{:target="_blank"}, [source][website source]{:target="_blank"}).
 
-This website is based around [Jekyll]{:target="_blank"} and the [Minima]{:target="_blank"} theme, but the styling has been entirely redone using [Bootstrap 5.0]{:target="_blank"} with [Material Icons]{:target="_blank"}.
+This website is based around [Jekyll]{:target="_blank"} and the [Minima]{:target="_blank"} theme, but the styling has been entirely redone using [Bootstrap 5.0]{:target="_blank"} with [Material Icons]{:target="_blank"} and [Devicon]{:target="_blank"}.
 
 This website serves several purposes
 <ul class="list-group">
@@ -51,7 +60,7 @@ This website serves several purposes
 <li class="list-group-item">To publish (and archive) compositions</li>
 <li class="list-group-item">To publish (and archive) poetry and stories</li>
 <li class="list-group-item">To describe myself</li>
-<li class="list-group-item">To give a place to write about my intests</li>
+<li class="list-group-item">To give a place to write about my interests</li>
 <li class="list-group-item">To give a place to publish essays</li>
 </ul>
 
@@ -71,6 +80,8 @@ The website itself, with the exception of the already-licensed works therein, is
 [Minima]:https://github.com/jekyll/minima
 [Bootstrap 5.0]:https://getbootstrap.com/
 [Material Icons]:https://fonts.google.com/icons?selected=Material+Icons
+[Devicon]:https://devicon.dev/
+
 
 [MIT License]:/license/
 
