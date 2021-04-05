@@ -15,7 +15,7 @@ const compositions = {
 }
 function hashChange(){
   const opus = parseInt(window.location.hash.substr(1));
-  if(opus){
+  if(opus && Object.keys(compositions).includes(opus.toString())){
     let contentWrapper = document.querySelector(".content-wrapper");
     while(contentWrapper.lastChild)
       contentWrapper.removeChild(contentWrapper.lastChild);

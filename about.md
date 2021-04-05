@@ -3,6 +3,9 @@ layout: page
 title: About
 permalink: /about/
 ---
+1. 
+{:toc}
+
 ## Contact
 Please contact me through either of these emails for business purposes.
 

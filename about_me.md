@@ -5,6 +5,9 @@ permalink: /about_me/
 ---
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
+1. 
+{:toc}
+
 My name is Zane Clark and I go by the username Ketexon.
 
 I am a <span id="age"></span> year old student who finds joy in academia and creativity.

@@ -40,4 +40,31 @@ document.querySelectorAll(".form-control-auto-select").forEach(
 		e.addEventListener("click", (evt)=>{evt.target.select();});
 	}
 )
+
+
+
+
+
+// TOC Pretty Generator
+let toc = document.querySelector("#markdown-toc");
+if(toc){
+	let card = document.createElement("div");
+	card.classList.add("card");
+	toc.parentNode.replaceChild(card, toc);
+	
+	let cardBody = document.createElement("div");
+	cardBody.classList.add("card-body", "ps-0");
+
+	toc.classList.add("m-0", "fs-5");
+	cardBody.appendChild(toc);
+
+	/*for(let li of toc.querySelectorAll("li")){
+		let p = document.createElement("p");
+		p.classList.add("card-text");
+		p.append(...li.querySelectorAll("a"));
+		cardBody.appendChild(p);
+	}*/
+
+	card.appendChild(cardBody);
+}
 </script>

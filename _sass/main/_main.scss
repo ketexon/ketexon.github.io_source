@@ -88,3 +88,11 @@
 .ws-pre {
 	white-space: pre;
 }
+
+#markdown-toc li {
+	padding-left: ($spacer * 0.5) !important;
+}
+
+#markdown-toc li::marker {
+	content: counter(list-item);
+}
