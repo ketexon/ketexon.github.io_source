@@ -53,23 +53,30 @@ layout: default
       {%- endfor -%}
       {%- if paginator.page_trail -%}
         <div class="container d-flex justify-content-center">
-          <div class="btn-group">
-            <a class="btn btn-secondary material-icons px-0 {% if paginator.previous_page_path == nil %}disabled{% endif %}"
-              href="{{ paginator.previous_page_path | prepend: site.baseurl }}">
-              navigate_before
-            </a >
+          <ul class="pagination">
+            <li class="page-item {% if paginator.previous_page_path == nil %}disabled{% endif %}">
+              <a class="page-link material-icons px-1"
+                href="{{ paginator.previous_page_path | prepend: site.baseurl }}">
+                navigate_before
+              </a >
+            </li>
+            
             {% for trail in paginator.page_trail %}
-            <a class="btn btn-secondary {% if page.url == trail.path %}disabled{% endif %}"
-              href="{{ trail.path | prepend: site.baseurl }}"
-              title="{{trail.title}}">
-              {{ trail.num }}
-            </a >
+            <li class="page-item {% if page.url == trail.path %}active{% endif %}">
+              <a class="page-link"
+                href="{{ trail.path | prepend: site.baseurl }}"
+                title="{{trail.title}}">
+                {{ trail.num }}
+              </a >
+            </li>
             {% endfor %}
-            <a class="btn btn-secondary px-0 material-icons {% if paginator.next_page_path == nil %}disabled{% endif %}"
-              href="{{ paginator.next_page_path | prepend: site.baseurl }}">
-              navigate_next
-            </a >
-          </div>
+            <li class="page-item {% if paginator.next_page_path == nil %}disabled{% endif %}">
+              <a class="page-link material-icons px-1"
+                href="{{ paginator.next_page_path | prepend: site.baseurl }}">
+                navigate_next
+              </a >
+            </li>
+          </ul>
         </div>
       {%- endif -%}
     </div>
