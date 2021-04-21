@@ -150,17 +150,30 @@ layout: default
 		play.addEventListener(
 			"click",
 			()=>{
-				cards[cardIndex].playing = !cards[cardIndex].playing;
-				if(cards[cardIndex].playing){
+				
+				if(!cards[cardIndex].playing){
 					cards[cardIndex].audio.play();
-					play.childNodes[0].nodeValue = miPause;
 				}
 				else{
 					cards[cardIndex].audio.pause();
-					play.childNodes[0].nodeValue = miPlay;
 				}
 			}
 		);
+
+		cards[cardIndex].audio.addEventListener(
+			"pause",
+			()=>{
+				cards[cardIndex].playing = false;
+				play.childNodes[0].nodeValue = miPlay;
+			}
+		);
+		cards[cardIndex].audio.addEventListener(
+			"play",
+			()=>{
+				cards[cardIndex].playing = true;
+				play.childNodes[0].nodeValue = miPause;
+			}
+		)
 
 		cards[cardIndex].audio.addEventListener(
 			"ended",
