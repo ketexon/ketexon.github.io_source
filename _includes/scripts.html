@@ -45,7 +45,7 @@ if(toc){
 	let card = document.createElement("div");
 	card.classList.add("card");
 	toc.parentNode.replaceChild(card, toc);
-	
+
 	let cardBody = document.createElement("div");
 	cardBody.classList.add("card-body", "ps-0");
 
@@ -75,6 +75,25 @@ document.querySelectorAll('a').forEach(
 document.querySelectorAll('a[target="_blank"]').forEach(
 	(el)=>{
 		el.rel = "noopener noreferrer";
+	}
+)
+
+
+// Sad-text emoji generator
+document.querySelectorAll('span.sad-text-emoji').forEach(
+	(el)=>{
+		const sad_text_emojis = [
+			"(ノ_<。)", "(-_-)", "(´-ω-`)", ".･ﾟﾟ･(／ω＼)･ﾟﾟ･.",
+			"(μ_μ)", "(ﾉД`)", "(-ω-、)", "。゜゜(´Ｏ`) ゜゜。",
+			"o(TヘTo)", "( ; ω ; )", "(｡╯︵╰｡)", "｡･ﾟﾟ*(>д<)*ﾟﾟ･｡",
+			"( ﾟ，_ゝ｀)", 	"(个_个)", 	"(╯︵╰,)", "｡･ﾟ(ﾟ><ﾟ)ﾟ･｡",
+			"( ╥ω╥ )", "(╯_╰)", "(╥_╥)", ".｡･ﾟﾟ･(＞_＜)･ﾟﾟ･｡.",
+			"(／ˍ・、)", "(ノ_<、)", "(╥﹏╥)", "｡ﾟ(｡ﾉωヽ｡)ﾟ｡",
+			"(つω`｡)", "(｡T ω T｡)", "(ﾉω･､)", "･ﾟ･(｡>ω<｡)･ﾟ･",
+			"(T_T)", "(>_<)", "(っ˘̩╭╮˘̩)っ", "｡ﾟ･ (>﹏<) ･ﾟ｡",
+			"o(〒﹏〒)o", "(｡•́︿•̀｡)", "(ಥ﹏ಥ)", "(ಡ‸ಡ)",
+		];
+		el.textContent = sad_text_emojis[Math.floor(Math.random() * sad_text_emojis.length)];
 	}
 )
 </script>
