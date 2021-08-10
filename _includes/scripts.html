@@ -24,12 +24,6 @@ var tooltipListHover = tooltipTriggerListHover.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 
-document.querySelectorAll('a[target="_blank"]').forEach(
-	(e)=>{
-		e.rel = "noopener noreferrer";
-	}
-)
-
 document.querySelectorAll(".form-control-size-dynamic").forEach(
 	(e)=>{
 		e.style.width = ((e.value.length + 2) * 8) + 'px';
@@ -67,4 +61,20 @@ if(toc){
 
 	card.appendChild(cardBody);
 }
+
+// Make external links target=_blank
+document.querySelectorAll('a').forEach(
+	(el)=>{
+		if(el.hostname != window.location.hostname && el.hostname != ""){
+      el.setAttribute("target", "_blank");
+    }
+	}
+)
+
+// Make target=_blank links noopener and noreferrer
+document.querySelectorAll('a[target="_blank"]').forEach(
+	(el)=>{
+		el.rel = "noopener noreferrer";
+	}
+)
 </script>

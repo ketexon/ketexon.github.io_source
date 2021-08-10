@@ -45,11 +45,11 @@ You can contact me on discord for any purpose:
 </button>.
 
 ## Me
+*For a more comprehensive description, see [about me](/about_me/)*
+
 My name is Zane Clark and I go by the username Ketexon.
 
 I am a <span id="age"></span> year old student who finds joy in academia and creativity.
-
-To know more about me, see [about me](/about_me/).
 
 ## This website
 

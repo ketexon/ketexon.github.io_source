@@ -5,6 +5,10 @@ author:
     - xketexon@gmail.com
     - zane.a.s.clark@gmail.com
 
+exclude:
+ - assets_src
+ - react_src/
+
 sass:
   sass_dir: _sass
 
@@ -21,14 +25,23 @@ minima:
 
 
 header_pages:
- - url: /about/
+ - title: About
+   urls:
+    - title: About
+      url: /about/
+    - title: About Me
+      url: /about_me/
  - title: Music
-   urls: 
+   urls:
     - url: /composition/index.html
  - title: Poetry
-   urls: 
+   urls:
     - title: Poems
       url: /poetry/index.html
+ - title: Programming
+   urls:
+    - title: Blog
+      url: /programming/blog/index.html
 
 
 home:
@@ -42,6 +55,9 @@ home:
     - label: composition
       sort: date
       url: /composition/
+    - label: programming blog
+      sort: date
+      disabled: true
 #theme: minima
 
 collections_dir: collections
@@ -51,6 +67,8 @@ collections:
   essays:
     output: true
   composition:
+    output: true
+  programming_blog:
     output: true
 
 plugins:
@@ -67,7 +85,7 @@ pagination:
   title: ':title - page :num'
 
   limit: 0
-  
+
   sort_field: 'date'
 
   sort_reverse: true
@@ -76,9 +94,9 @@ pagination:
 
   tag: ''
 
-  locale: '' 
+  locale: ''
 
-  trail: 
+  trail:
     before: 2
     after: 2
 
