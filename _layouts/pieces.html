@@ -24,6 +24,7 @@ layout: default
 			{%- endif -%}
 		</h6>
 	</header>
+	<hr/>
 	<div class="post-content">
 		{{ content }}
 		{%- for piece in page.pieces -%}
@@ -120,7 +121,7 @@ layout: default
 				{{ piece.creation_date | date: date_format }}
 			</div>
 			{%- endif -%}
-			
+
 		</div>
 		{%- endfor -%}
 	</div>
@@ -130,7 +131,7 @@ layout: default
 		miPlay = "play_arrow",
 		miVolume = "volume_up",
 		miMuted = "volume_off";
-	
+
 	const rewindAmount = 10;
 
 	const files = [
@@ -150,7 +151,7 @@ layout: default
 		play.addEventListener(
 			"click",
 			()=>{
-				
+
 				if(!cards[cardIndex].playing){
 					cards[cardIndex].audio.play();
 				}
@@ -243,12 +244,12 @@ layout: default
 					mute.muted = false;
 					mute.childNodes[0].nodeValue = miVoume;
 				}
-					
+
 				cards[cardIndex].audio.volume = parseInt(volumeRange.value)/100
 			}
 		);
 
-		
+
 		mute.addEventListener(
 			"click",
 			()=>{

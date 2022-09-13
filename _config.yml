@@ -48,6 +48,8 @@ header_pages:
       url: /poetry/index.html
  - title: Programming
    urls:
+    - title: Projects
+      url: /programming/projects/index.html
     - title: Blog
       url: /programming/blog/index.html
 
@@ -78,10 +80,13 @@ collections:
     output: true
   programming_blog:
     output: true
+  programming_projects:
+    output: true
 
 plugins:
  - jekyll-seo-tag
  - jekyll-paginate-v2
+ - jekyll-toc
 
 pagination:
   enabled: true
@@ -128,3 +133,6 @@ autopages:
     slugify:
       mode: "default"
       case: false
+
+toc:
+  ordered_list: true

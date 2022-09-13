@@ -2,11 +2,9 @@
 layout: page
 title: About Me
 permalink: /about_me/
+toc: true
 ---
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-
-1. 
-{:toc}
 
 My name is Zane Clark and I go by the username Ketexon.
 

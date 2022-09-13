@@ -2,6 +2,7 @@
 layout: default
 ---
 {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+{%- assign date_format_my = "%B %Y" -%}
 <article class="post">
   <header class="post-header">
     <h1 class="post-title">{{ page.title | escape }}</h1>
@@ -15,20 +16,33 @@ layout: default
         </div>
     {%- endif -%}
     <div class="container post-tags"></div>
+
+    {%- if page.start_date and page.end_date -%}
+    <h6 class="post-subtitle text-secondary">
+      {{ page.start_date | date: date_format_my }}&ndash;{{ page.end_date | date: date_format_my }}
+    </h6>
+    {%- endif -%}
+
     <h6 class="post-subtitle text-secondary">
       {%- if page.updated -%}
-        {{ page.date_published | date: date_format }} updated {{ page.date | date: date_format }}
+        Published {{ page.date_published | date: date_format }} updated {{ page.date | date: date_format }}
       {%- else -%}
-        {{ page.date | date: date_format }}
+        Published {{ page.date | date: date_format }}
       {%- endif -%}
     </h6>
+    {%- if page.repo -%}
+    <h6 class="post-subtitle text-secondary">
+      <a href="{{ page.repo }}" target="_blank">Repo</a>
+    </h6>
+    {%- endif -%}
   </header>
   {%- if page.description -%}
     <p class="lead">
       {{ page.description }}
     </p>
   {%- endif -%}
+  <hr/>
   <div class="post-content programming-post-content">
-    {{ content }}
+    {{ content | toc }}
   </div>
 </article>

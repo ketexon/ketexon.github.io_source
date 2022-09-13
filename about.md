@@ -2,10 +2,8 @@
 layout: page
 title: About
 permalink: /about/
+toc: true
 ---
-1. 
-{:toc}
-
 ## Contact
 Please contact me through either of these emails for business purposes.
 
@@ -73,7 +71,7 @@ All musical compositions and poems are licensed under a <a rel="license" href="h
 
 This audio files are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>. <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
 
-The website itself, with the exception of the already-licensed works therein, is licensed under the [MIT License]. 
+The website itself, with the exception of the already-licensed works therein, is licensed under the [MIT License].
 
 [Github pages]:https://pages.github.com/
 [website github]:https://github.com/ketexon/ketexon.github.io
