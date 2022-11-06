@@ -36,6 +36,10 @@ layout: default
 	{%- endif -%}
 	<hr/>
 	<div class="post-content">
-		<p class="poem-content">{{ content }}</p>
+		{%- if page.wrap -%}
+			<p class="poem-content poem-content-wrap">{{ content }}</p>
+		{%- else -%}
+			<p class="poem-content poem-content-no-wrap">{{ content }}</p>
+		{%- endif -%}
 	</div>
 </article>

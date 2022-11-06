@@ -79,8 +79,15 @@
 	font-family: "Parisienne";
 }
 
-.poem-content {
+// .poem-content {
+// }
+
+.poem-content-no-wrap {
 	white-space: pre;
+}
+
+.poem-content-wrap {
+	white-space: pre-wrap;
 }
 
 .home-col-body hr:last-of-type {
